@@ -1,71 +1,60 @@
 # TLADListKey
 
-A small ASI plugin for GTA IV Complete Edition that moves the game's **Tab** action (the TLAD biker/club member list) to a different key (**F6**), allowing other mods that use Tab (e.g. Liberty Loadout's weapon and radio wheels) to function properly.
+A small ASI plugin used with GTA IV Complete Edition (1.2.0.59, Steam). It moves the game's Tab action, the TLAD club member list, to **F6**, so Liberty Loadout's weapon and radio wheels can keep Tab.
 
-## Why
+Setup when written:
 
-In TLAD, Tab toggles an on-screen list of club members with a bar for each (top-left of the screen). Liberty Loadout also uses Tab (hold) for its weapon and radio wheels, so holding Tab to open a wheel also toggles the list. Hittle Tab again to toggle the off the list turns off the radio. Holding down Tab to turn the radio back on toggles the list back on, creating a vicious cycle. The game's Tab action isn't in the controls menu or `ControlMap.dat`, so it can't be rebound in game.
+| Component | Version | Released |
+|---|---|---|
+| GTA IV Complete Edition (Steam) | 1.2.0.59 | - |
+| [FusionFix](https://github.com/ThirteenAG/GTAIV.EFLC.FusionFix/releases/tag/v5.1.1) | 5.1.1 | 1 Oct 2026 |
+| [Gillian's Liberty Drag-and-Drop](https://gillian-guide.github.io/drag-and-drop-archive/) | 2.11.2026 | 2 Nov 2026 |
+| [Liberty Loadout](https://www.nexusmods.com/gta4/mods/1226) | 0.19.2 | 31 Oct 2026 |
+| [Liberty Shoulder](https://www.nexusmods.com/gta4/mods/1229) | 0.3.0 | 12 Oct 2026 |
 
+## The problem
 
-### What the list is
-Most likely TLAD's crew **toughness** display: one bar per Lost MC member (Billy, Jim, Terry, Clay, Brian, Jason at the start of the DLC). This is inferred from community guides, which describe toughness bars in the top-left of the screen and a toughness readout under Stats > Player. No official Rockstar or PC controls documentation mentions the Tab binding, so treat the key as a hard-coded input. Confirmed on the tested setup that the list is base game: it still appears on Tab with all mods and plugins disabled.
+In TLAD, Tab toggles an on-screen list of club members with a bar for each, top-left. Liberty Loadout also uses Tab (hold) for its wheels, so opening a wheel toggles the list too. Hitting Tab again to hide the list turns off the radio, and holding Tab to turn the radio back on brings the list back.
 
-<img width="586" height="275" alt="20261107163518_1" src="https://github.com/user-attachments/assets/f60730e0-0dca-4999-bb3e-f55e60671876" />
+<img width="586" height="275" alt="The TLAD club member list, cropped from an in-game screenshot" src="docs/img/20261107163518_1_cropped.jpg" /><br>
+<sub>The TLAD club member list, cropped from the Steam screenshot `20261107163518_1.jpg`, taken 7 Nov 2026 at 16:35:18. The original is in `760\remote\12210\screenshots` or in Steam's screenshot manager.</sub>
 
+The list displays the crew toughness; however, no documentation mentions the Tab binding. The full write-up, with sources and in-game tests, is in [`docs/tlad-tab-list-research.md`](docs/tlad-tab-list-research.md). The list is a base-game feature (i.e., it still appears with `update` and `plugins` renamed). Tab isn't in the controls menu or `ControlMap.dat`, so it can't be rebound in game.
 
 ## How it works
 
-The plugin swaps two keys (default: **Tab ↔ F6**) in what the *game* sees, and leaves everything else alone:
+The plugin swaps Tab and F6 in what the game sees. F6 looks like Tab and toggles the list. Real Tab no longer reaches the game's Tab action, but plugins that read the keyboard through the Windows API still see it, so the wheels stay on Tab.
 
-- Pressing **F6** looks like Tab to the game, so it toggles the biker list.
-- Real **Tab** no longer reaches the game's own Tab action, but other plugins that read the keyboard through the Windows API still see it, so the wheels stay on Tab.
-
-Findings from logging on the tested setup (Steam, Complete Edition, FusionFix):
-
-- The game reads the keyboard through DirectInput 8 on the **Unicode** interface (`IDirectInputDevice8W`), using `GetDeviceState` and `GetDeviceData`.
-- The game exe also calls `GetKeyboardState`.
-- It does not use `GetAsyncKeyState`, `GetKeyState`, key window messages or `WM_INPUT` for this.
-
-The plugin patches the DirectInput device vtables (ANSI and Unicode) and the exe's `GetKeyboardState` import. It does not modify any game files, and there is no game source code involved.
+From the logs, the game reads the keyboard through DirectInput 8 (Unicode interface, `GetDeviceState` and `GetDeviceData`) and calls `GetKeyboardState`, so those are what get hooked. It doesn't use `GetAsyncKeyState`, `GetKeyState`, key messages or `WM_INPUT` for this. No game files are modified.
 
 ## Install
 
-1. Put `TLADListKey.asi` and `TLADListKey.ini` in `GTAIV\plugins` (an ASI loader is required, as for FusionFix and similar mods).
-2. Keep Liberty Loadout's `KeyboardWheelKey` and `RadioWheelKey` at `9` (Tab).
-3. Launch the game. Press **F6** for the biker list; hold **Tab** for the wheels.
+`TLADListKey.asi` and `TLADListKey.ini` go in `GTAIV\plugins`, with Liberty Loadout's `KeyboardWheelKey` and `RadioWheelKey` left at `9` (Tab). F6 then toggles the list and holding Tab opens the wheels. Deleting both files uninstalls it.
 
-To uninstall, delete the `.asi` and `.ini`.
+`NewKey` in the ini sets the replacement key, as a decimal Windows virtual-key code:
 
-## Config (`TLADListKey.ini`)
+| Key | Code |
+|---|---|
+| Tab (`GameKey`) | 9 |
+| Caps Lock | 20 |
+| G | 71 |
+| F5 | 116 |
+| F6 (default `NewKey`) | 117 |
+| F7 | 118 |
+| F8 | 119 |
 
-| Key | Default | Meaning |
-|---|---|---|
-| `Keys/GameKey` | `9` | The key the game uses (Tab). Windows virtual-key code, decimal. |
-| `Keys/NewKey` | `117` | The key you press instead (F6). Other examples: `118` F7, `20` Caps Lock, `71` G. |
-| `Hooks/DirectInput` | `1` | Required on the tested setup. |
-| `Hooks/WinApi` | `1` | Required on the tested setup (`GetKeyboardState`). |
-| `Hooks/Messages` | `0` | Not needed on the tested setup. |
-| `Misc/Log` | `0` | Set to `1` to write `TLADListKey.log` beside the plugin (useful for troubleshooting). |
+`Log=1` writes `TLADListKey.log`, which shows which input path the game uses. That helps if a game or FusionFix update breaks the plugin. The `[Hooks]` entries stay at their defaults.
 
-## Troubleshooting
-
-Set `Log=1`, restart, play for a minute, then check `TLADListKey.log`. Lines starting `GAME READS` or `GAME CALLS` show which input path the game is using, and the 60-second summary line gives call counts. If none fire after a game or FusionFix update, the game is reading input some other way and the hooks need updating.
+The swap hides real Tab from the game entirely, so any other Tab action in menus or minigames now sits on F6. Controllers are unaffected.
 
 ## Build
 
-32-bit (the game is 32-bit). With MinGW-w64 (`i686`):
+`src/TLADListKey.cpp` is the plugin's C++ source. From the repo root, it builds as 32-bit with MinGW-w64:
 
 ```sh
 i686-w64-mingw32-g++ -O2 -shared -static -static-libgcc -static-libstdc++ \
-  -o TLADListKey.asi TLADListKey.cpp -ldinput8 -ldxguid -Wl,--kill-at
+  -o TLADListKey.asi src/TLADListKey.cpp -ldinput8 -ldxguid -Wl,--kill-at
 ```
-
-## Known limits
-
-- The swap hides real Tab from the game entirely. If Tab does something else in a menu or minigame, that action now sits on F6.
-- Controllers are unaffected.
-- A game or FusionFix update could change how input is read; the log shows which path stopped firing.
-
-## AI disclosure
+## AI Disclosure
 
 This plugin was written by Claude.
