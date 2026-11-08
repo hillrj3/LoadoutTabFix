@@ -6,11 +6,12 @@ A small ASI plugin for GTA IV Complete Edition that moves the game's **Tab** act
 
 In TLAD, Tab toggles an on-screen list of club members with a bar for each (top-left of the screen). Liberty Loadout also uses Tab (hold) for its weapon and radio wheels, so holding Tab to open a wheel also toggles the list. Hittle Tab again to toggle the off the list turns off the radio. Holding down Tab to turn the radio back on toggles the list back on, creating a vicious cycle. The game's Tab action isn't in the controls menu or `ControlMap.dat`, so it can't be rebound in game.
 
-<img width="586" height="275" alt="20261107163518_1" src="https://github.com/user-attachments/assets/f60730e0-0dca-4999-bb3e-f55e60671876" />
 
 ### What the list is
-
 Most likely TLAD's crew **toughness** display: one bar per Lost MC member (Billy, Jim, Terry, Clay, Brian, Jason at the start of the DLC). This is inferred from community guides, which describe toughness bars in the top-left of the screen and a toughness readout under Stats > Player. No official Rockstar or PC controls documentation mentions the Tab binding, so treat the key as a hard-coded input. Confirmed on the tested setup that the list is base game: it still appears on Tab with all mods and plugins disabled.
+
+<img width="586" height="275" alt="20261107163518_1" src="https://github.com/user-attachments/assets/f60730e0-0dca-4999-bb3e-f55e60671876" />
+
 
 ## How it works
 
@@ -67,8 +68,4 @@ i686-w64-mingw32-g++ -O2 -shared -static -static-libgcc -static-libstdc++ \
 
 ## AI disclosure
 
-This plugin, its source code, and this README were written by Claude (an AI model made by Anthropic) in conversation with the repository owner, who tested it in-game and supplied the logs used to debug it. It has been tested on one setup only, so review the code before relying on it.
-
-## Status
-
-Personal project, tested on one setup only (GTA IV Complete Edition via Steam, FusionFix, Liberty Loadout). Use at your own risk and back up before installing.
+This plugin was written by Claude.
