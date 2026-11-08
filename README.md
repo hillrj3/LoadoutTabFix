@@ -16,8 +16,8 @@ Setup when written:
 
 In TLAD, Tab toggles an on-screen list of club members with a bar for each, top-left. Liberty Loadout also uses Tab (hold) for its wheels, so opening a wheel toggles the list too. Hitting Tab again to hide the list turns off the radio, and holding Tab to turn the radio back on brings the list back.
 
-<img width="586" height="275" alt="The TLAD club member list, cropped from an in-game screenshot" src="docs/img/20261107163518_1_cropped.jpg" /><br>
-<sub>The TLAD club member list, cropped from the Steam screenshot `20261107163518_1.jpg`, taken 7 Nov 2026 at 16:35:18. The original is in `760\remote\12210\screenshots` or in Steam's screenshot manager.</sub>
+<img width="440" alt="The TLAD club member list, cropped from an in-game screenshot" src="docs/img/20261107163518_1_cropped.jpg" /><br>
+<sub>The TLAD club member list, cropped from the Steam screenshot `20261107163518_1.jpg`.
 
 The list displays the crew toughness; however, no documentation mentions the Tab binding. The full write-up, with sources and in-game tests, is in [`docs/tlad-tab-list-research.md`](docs/tlad-tab-list-research.md). The list is a base-game feature (i.e., it still appears with `update` and `plugins` renamed). Tab isn't in the controls menu or `ControlMap.dat`, so it can't be rebound in game.
 
