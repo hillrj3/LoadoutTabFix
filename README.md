@@ -1,10 +1,12 @@
 # TLADListKey
 
-A small ASI plugin for GTA IV Complete Edition that moves the game's **Tab** action (the TLAD biker/club member list) to a different key, without affecting other mods that use Tab (e.g. Liberty Loadout's weapon and radio wheels).
+A small ASI plugin for GTA IV Complete Edition that moves the game's **Tab** action (the TLAD biker/club member list) to a different key (**F6**), allowing other mods that use Tab (e.g. Liberty Loadout's weapon and radio wheels) to function properly.
 
 ## Why
 
-In TLAD, Tab toggles an on-screen list of club members with a bar for each (top-left of the screen). Liberty Loadout also uses Tab (hold) for its weapon and radio wheels, so holding Tab to open a wheel also flashes the list. The game's Tab action isn't in the controls menu or `ControlMap.dat`, so it can't be rebound in game.
+In TLAD, Tab toggles an on-screen list of club members with a bar for each (top-left of the screen). Liberty Loadout also uses Tab (hold) for its weapon and radio wheels, so holding Tab to open a wheel also toggles the list. Hittle Tab again to toggle the off the list turns off the radio. Holding down Tab to turn the radio back on toggles the list back on, creating a vicious cycle. The game's Tab action isn't in the controls menu or `ControlMap.dat`, so it can't be rebound in game.
+
+<img width="586" height="275" alt="20261107163518_1" src="https://github.com/user-attachments/assets/f60730e0-0dca-4999-bb3e-f55e60671876" />
 
 ### What the list is
 
