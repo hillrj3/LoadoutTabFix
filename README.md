@@ -1,6 +1,6 @@
 # TLADListKey
 
-A small ASI plugin used with GTA IV Complete Edition (1.2.0.59, Steam). It moves the game's Tab action, the TLAD club member list, to **F6**, so Liberty Loadout's weapon and radio wheels can keep Tab.
+A small QoL compatibility patch for TLAD and [Liberty Loadout](https://www.nexusmods.com/gta4/mods/1226). It moves the game's Tab action, the TLAD club member list, to **F6**, so LibertyLoadout's weapon and radio wheels can keep Tab.
 
 Setup when written:
 
