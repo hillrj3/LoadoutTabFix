@@ -8,7 +8,7 @@ Setup when written:
 |---|---|---|
 | GTA IV Complete Edition (Steam) | 1.2.0.59 | - |
 | [FusionFix](https://github.com/ThirteenAG/GTAIV.EFLC.FusionFix/releases/tag/v5.1.1) | 5.1.1 | 1 Oct 2026 |
-| [Gillian's Liberty Drag-and-Drop](https://gillian-guide.github.io/drag-and-drop-archive/) | 2.11.2026 | 2 Nov 2026 |
+| [Gillian's Liberty Drag-and-Drop](https://gillian-guide.github.io/drag-and-drop-archive/) | 23.11.2026 | 23 Nov 2026 |
 | [Liberty Loadout](https://www.nexusmods.com/gta4/mods/1226) | 0.19.2 | 31 Oct 2026 |
 | [Liberty Shoulder](https://www.nexusmods.com/gta4/mods/1229) | 0.3.0 | 12 Oct 2026 |
 
