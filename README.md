@@ -1,4 +1,4 @@
-# TLADListKey
+# LoadoutTabFix
 
 A small QoL compatibility patch for TLAD and [Liberty Loadout](https://www.nexusmods.com/gta4/mods/1226). It moves the game's Tab action, the TLAD club member list, to **F6**, so LibertyLoadout's weapon and radio wheels can keep Tab.
 
@@ -29,7 +29,7 @@ From the logs, the game reads the keyboard through DirectInput 8 (Unicode interf
 
 ## Install
 
-`TLADListKey.asi` and `TLADListKey.ini` go in `GTAIV\plugins`, with Liberty Loadout's `KeyboardWheelKey` and `RadioWheelKey` left at `9` (Tab). F6 then toggles the list and holding Tab opens the wheels. Deleting both files uninstalls it.
+`LoadoutTabFix.asi` and `LoadoutTabFix.ini` go in `GTAIV\plugins`, with Liberty Loadout's `KeyboardWheelKey` and `RadioWheelKey` left at `9` (Tab). F6 then toggles the list and holding Tab opens the wheels. Deleting both files uninstalls it.
 
 `NewKey` in the ini sets the replacement key, as a decimal Windows virtual-key code:
 
@@ -43,17 +43,17 @@ From the logs, the game reads the keyboard through DirectInput 8 (Unicode interf
 | F7 | 118 |
 | F8 | 119 |
 
-`Log=1` writes `TLADListKey.log`, which shows which input path the game uses. That helps if a game or FusionFix update breaks the plugin. The `[Hooks]` entries stay at their defaults.
+`Log=1` writes `LoadoutTabFix.log`, which shows which input path the game uses. That helps if a game or FusionFix update breaks the plugin. The `[Hooks]` entries stay at their defaults.
 
 The swap hides real Tab from the game entirely, so any other Tab action in menus or minigames now sits on F6. Controllers are unaffected.
 
 ## Build
 
-`src/TLADListKey.cpp` is the plugin's C++ source. From the repo root, it builds as 32-bit with MinGW-w64:
+`src/LoadoutTabFix.cpp` is the plugin's C++ source. From the repo root, it builds as 32-bit with MinGW-w64:
 
 ```sh
 i686-w64-mingw32-g++ -O2 -shared -static -static-libgcc -static-libstdc++ \
-  -o TLADListKey.asi src/TLADListKey.cpp -ldinput8 -ldxguid -Wl,--kill-at
+  -o LoadoutTabFix.asi src/LoadoutTabFix.cpp -ldinput8 -ldxguid -Wl,--kill-at
 ```
 ## AI Disclosure
 

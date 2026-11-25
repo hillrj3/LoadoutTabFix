@@ -1,6 +1,6 @@
 # GTA IV: The Lost and Damned - what the Tab-toggled six-name list is
 
-Research notes for the TLADListKey repo. Compiled by Claude (Anthropic) on 8 Nov 2026 from community guides, wikis and forum posts. None of this was checked against the game's files, so the inferences are inferences.
+Research notes for the LoadoutTabFix repo. Compiled by Claude (Anthropic) on 8 Nov 2026 from community guides, wikis and forum posts. None of this was checked against the game's files, so the inferences are inferences.
 
 ## Bottom line
 

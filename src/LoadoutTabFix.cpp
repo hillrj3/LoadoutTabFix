@@ -1,4 +1,4 @@
-// TLADListKey.asi v2 - swaps two keys in what the GAME sees, leaving other
+// LoadoutTabFix.asi v2 - swaps two keys in what the GAME sees, leaving other
 // plugins (Liberty Loadout etc.) on the real keys.
 //
 // Default: game sees F6 as Tab and Tab as F6. Covers every way the game could
@@ -6,7 +6,7 @@
 //   1. DirectInput 8 keyboard devices, ANSI and Unicode interfaces
 //   2. GetAsyncKeyState / GetKeyState / GetKeyboardState called from GTAIV.exe
 //   3. WM_KEYDOWN/UP messages on the game's window thread
-// 32-bit, loaded by an ASI loader. Config: TLADListKey.ini beside the .asi.
+// 32-bit, loaded by an ASI loader. Config: LoadoutTabFix.ini beside the .asi.
 
 #define DIRECTINPUT_VERSION 0x0800
 #include <windows.h>
@@ -207,7 +207,7 @@ BOOL APIENTRY DllMain(HMODULE mod, DWORD reason, LPVOID) {
         g_doApi = GetPrivateProfileIntA("Hooks", "WinApi", 1, ini) != 0;
         g_doMsg = GetPrivateProfileIntA("Hooks", "Messages", 1, ini) != 0;
         g_dikA = (BYTE)MapVirtualKeyA(g_vkA, MAPVK_VK_TO_VSC); g_dikB = (BYTE)MapVirtualKeyA(g_vkB, MAPVK_VK_TO_VSC);
-        Log("TLADListKey v2 loaded: GameKey vk=%d NewKey vk=%d (DirectInput=%d WinApi=%d Messages=%d)", g_vkA, g_vkB, g_doDI, g_doApi, g_doMsg);
+        Log("LoadoutTabFix v2 loaded: GameKey vk=%d NewKey vk=%d (DirectInput=%d WinApi=%d Messages=%d)", g_vkA, g_vkB, g_doDI, g_doApi, g_doMsg);
         if (!g_dikA || !g_dikB || g_vkA == g_vkB) { Log("ERROR: invalid key configuration, plugin disabled"); return TRUE; }
         CreateThread(nullptr, 0, Worker, nullptr, 0, nullptr);
         if (g_doMsg) CreateThread(nullptr, 0, MsgWorker, nullptr, 0, nullptr);
