@@ -1,16 +1,31 @@
 # GTA IV: The Lost and Damned - what the Tab-toggled six-name list is
 
-Research notes for the LoadoutTabFix repo. Compiled by Claude (Anthropic) on 8 Nov 2026 from community guides, wikis and forum posts. None of this was checked against the game's files, so the inferences are inferences.
+Research notes for the LoadoutTabFix repo. Compiled by Claude (Anthropic) on 8 Nov 2026 from community guides, wikis and forum posts, then updated on 25 Nov 2026 with the game's own help text, seen while playing the start of TLAD. Nothing was checked against the game's files.
 
 ## Bottom line
 
-The list is almost certainly TLAD's built-in crew **toughness** display: a base-game HUD panel in the top-left corner showing one grey bar per Lost MC member. Players usually see it pop up after missions and Gang Wars. Confidence is moderate to high (about 75%). No located source documents a Tab binding for it, explains why it shows Billy, Jim, Terry, Clay, Brian and Jason, or confirms Gemini's "health bars and battle toughness" wording. Those parts are inference.
+The list is TLAD's built-in crew **toughness** display, and Tab is its official PC key. This is now confirmed by the game itself: early in TLAD a help box says "At any time during a job press TAB to view how battle hardened the Lost gang members with you are," and the post-job tutorial says the panel shows "how fight hardened your Lost gang members are." The list is only available during missions; outside one the key does nothing. The console button is unconfirmed.
 
 ## Short version
 
-- **What it is:** players describe a six-slot toughness display with bars in the top-left of the screen. A TrueAchievements guide says that after completing the mission, the increase in toughness shows on bars in the top-left. A GTAForums player described "six full bars on the toughness display." Static, unequal fills that were identical in a firefight and a calm ride fit a stored stat better than live health.
-- **Why those six names:** they are the six named Lost members who ride with Johnny at the start of the DLC (the welcome-home party in "Clean and Serene"). The display seems to fill its six slots with whoever is in Johnny's crew. Later the slots hold the Gang War crew (Terry, Clay, Jim plus three generic bikers). Inference.
-- **Input and Gemini's claim:** no source says which button shows the list. On consoles, D-pad Down is radar zoom (and the multiplayer scoreboard), so it is plausible but unverified. On PC, Tab is probably a hard-coded scoreboard-style key, which would explain why it is not in the controls menu or `ControlMap.dat`. Gemini's cited YouTube video is a cheat-codes video and does not support the claim. MobyGames' remark that the members' health bars are shown on screen is the closest real source.
+- **What it is:** the crew toughness panel, top-left of the screen, one bar per Lost member on the job with you. The game's tutorial says so directly (see "Confirmed in game" below).
+- **The key:** Tab on PC, as stated by the game's own help prompt. It only works during a mission (a "job"); free roaming, the key does nothing. It is still absent from the controls menu and `ControlMap.dat`, so it can't be rebound in game. The console button is unconfirmed.
+- **Why those six names:** they are the six named Lost members who ride with Johnny at the start of the DLC (the welcome-home party in "Clean and Serene"). The tutorial says the panel covers "the Lost gang members with you," so it fills its slots with the current crew.
+
+## Confirmed in game (25 Nov 2026)
+
+Seen on the PC version at the start of TLAD:
+
+- **The Tab prompt.** While riding with the club, a help box reads: "At any time during a job press TAB to view how battle hardened the Lost gang members with you are." So Tab is the intended key, and only during a job.
+- **Missions only.** The list toggles only while a mission is active. The opening of the DLC is a mission, which is why it worked during the first rides with the club. The panel also appears on its own at the end of a mission. Free roaming Liberty City, the key (F6 with this plugin) does nothing.
+- **The tutorial after the first job.** Back at the clubhouse the panel pops up on its own with three help boxes in turn:
+  1. "The details displayed above the radar show how fight hardened your Lost gang members are. This is represented by the colored bar next to their names."
+  2. "Gang members get harder each time they complete a job with you. They will become more effective in gun battles."
+  3. "If they die on a job they will be replaced by a new Lost gang member."
+- **The bars are toughness, not health.** The tutorial names the stat ("fight hardened") and says it grows per completed job. That settles the health-vs-toughness question and makes Game Informer's and MobyGames' "health bars" a loose description.
+- **New gains show in a second color.** In the post-job panel each bar has a white part followed by a teal part. During the job (on Tab) the bars were white only. The teal part is the toughness earned on that job. Billy's and Jim's teal parts were longer than the other four.
+- **Six slots at the start.** The same six names (Billy, Jim, Terry, Clay, Brian, Jason) appear both during the first job and in the post-job tutorial, with Billy highest and Brian and Jason among the lowest.
+- **The panel pops up automatically after a job**, which matches the community reports of bars appearing top-left after missions.
 
 ## Confirmed facts (sourced)
 
@@ -26,37 +41,33 @@ The list is almost certainly TLAD's built-in crew **toughness** display: a base-
 
 ## Inference (not confirmed by any source)
 
-- **The bars show toughness, not live health.** The strongest evidence is the in-game observation: identical fills during a firefight and a calm ride, with a different value per member. Toughness probably scales each member's maximum health and accuracy (Grand Theft Wiki, Backup page: increased toughness gives more health and better accuracy), which would explain why reviewers called them health bars.
-- **Why Billy, Brian and Jason appear.** They are not in the Gang War pool, and Brian and Jason leave the story early, so they are probably shown only because they are in the current crew. The unequal starting values (Billy highest, Brian and Jason lowest) look like preset per-character values. Brian and Jason should disappear later, with the slots switching to Terry, Clay, Jim and the generic bikers.
-- **Why Tab is not in the controls menu.** GTA IV had a multiplayer scoreboard. On console it shares D-pad Down with radar zoom; on PC it was most likely a fixed key. The crew list probably reuses that hard-coded input, which fits the game polling the key directly through DirectInput and `GetKeyboardState`.
+- **What toughness does mechanically.** The game says only that tougher members "become more effective in gun battles." Grand Theft Wiki's Backup page says increased toughness gives more health and better accuracy, which would explain why reviewers called them health bars. Not checked in game.
+- **Why Billy, Brian and Jason appear.** They are not in the Gang War pool, and Brian and Jason leave the story early, so they are probably shown only because they are in the current crew. The unequal starting values (Billy highest, Brian and Jason lowest) look like preset per-character values.
+- **Why Tab is not in the controls menu.** The game confirms Tab is the key but doesn't list it. GTA IV had a multiplayer scoreboard; on console it shares D-pad Down with radar zoom, and on PC it was most likely a fixed key. The crew list probably reuses that hard-coded input, which fits the game polling the key directly through DirectInput and `GetKeyboardState`.
 - **Why Stats > Player shows no crew rows early in the DLC.** Those rows probably appear only once Terry and Clay become backup characters. Guides place that anywhere from "Hit the Pipe" to "Liberty City Choppers"; none says exactly when the rows appear.
 
 ## Gemini's claim, checked
 
 Gemini said Tab (PC) or D-pad Down (console) shows the names, health bars and battle toughness of the active crew.
 
-- **Partly supported:** a crew list with per-member bars exists (TrueAchievements, GTAForums, MobyGames), and linking it to toughness is supported by community guides.
-- **Not supported:** no located source says Tab on PC or D-pad Down on console. The "health bars" wording is only partly right: MobyGames and Game Informer call them health bars, but the static readings point to toughness.
+- **Confirmed:** Tab on PC shows the crew's names and toughness ("battle hardened" in the game's own prompt).
+- **Wrong:** the bars are not health bars. The game's tutorial describes them as how fight hardened each member is.
+- **Unconfirmed:** D-pad Down on console.
 - **The cited sources:** the YouTube video (CT253fozLus) is titled "GTA IV Episodes from Liberty City" and its description says it shows codes and cheats, so it is not a source for a HUD toggle (no transcript could be fetched). The Fandom "Characters in The Lost and Damned" snippets only cover bios and mission spans, with nothing about a HUD list. The claim looks like a plausible synthesis that its own citations do not back up.
 
-## Ranked explanations
+## Settled
 
-1. **Crew toughness display (most likely, about 75%).** The same panel that pops up after missions and Gang Wars, toggled manually on PC with a hard-coded Tab key. The bars are stored toughness.
-2. **Crew health display (about 15%).** The bars show current health relative to a toughness-scaled maximum. Less likely given the identical readings, unless nobody was damaged in either screenshot.
-3. **Leftover multiplayer scoreboard or debug panel showing crew data (about 10%).** The GTA IV scoreboard component repurposed in single-player.
+The earlier ranked explanations (toughness display, health display, leftover scoreboard) and the health-vs-toughness and post-mission tests are settled by the game's help text: it is the toughness display, it pops up after a job, and Tab toggles it during missions. Which members fill the slots later (Gang War crews, Brian and Jason leaving) is out of scope for this mod and wasn't pursued.
 
-## In-game tests to confirm
+## Remaining in-game tests
 
-1. **Health or toughness:** during a ride, let an ally get clipped by traffic or a stray hit, then press Tab right away. A bar that drops and recovers means health; a bar that does not move means toughness.
-2. **Update after a mission:** note the bars, finish "Clean and Serene" or the next mission, and check whether the same panel pops up on its own and whether any bar grows.
-3. **Match against Stats:** once Stats > Player shows Terry and Clay, compare their percentages with their bar lengths.
-4. **Roster change:** after Jason and Brian leave, and in the first Gang War (available after the 9th mission, "Coming Down", per a PSNProfiles trophy guide, no link saved), check whether the names switch to generic bikers.
-5. **Console button:** with an Xbox controller, press D-pad Down, and also try T on the keyboard, to see whether the list appears alongside radar zoom.
-6. **Text keys (optional):** in OpenIV, search TLAD's text file (for example `TLAD/common/text/american.gxt`) for "TOUGH" or the member names to find the HUD label keys. Suggested, not verified.
+1. **Match against Stats:** once Stats > Player shows Terry and Clay, compare their percentages with their bar lengths.
+2. **Console button:** with an Xbox controller, press D-pad Down to see whether the list appears alongside radar zoom.
+3. **Text keys (optional):** in OpenIV, search TLAD's text file (for example `TLAD/common/text/american.gxt`) for the help text above to find its label keys. Suggested, not verified.
 
 ## Caveats
 
-- No Rockstar manual, PC controls document, GXT dump or decompiled script reference describing this toggle or its key turned up. The Tab and D-pad Down mappings are unconfirmed.
+- No Rockstar manual, PC controls document, GXT dump or decompiled script reference describing this toggle turned up. The Tab key is confirmed only by the in-game help text; D-pad Down is unconfirmed.
 - The six-bar and top-left descriptions come from community posts, not official documentation. Growth percentages vary between guides (2-4% versus a flat 4% per Gang War).
 - MobyGames' and Game Informer's health-bar wording is reviewer description, not a technical spec.
 - The Hydro_PT GameFAQs quote is a fragment from a search snippet; GameFAQs blocked fetching the full guide.

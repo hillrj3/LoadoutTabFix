@@ -14,12 +14,12 @@ Setup when written:
 
 ## The problem
 
-In TLAD, Tab toggles an on-screen list (top-left) of club members with a bar for each. LibertyLoadout also uses Tab (hold) for its wheels, so opening a wheel toggles the list too. Hitting Tab again to hide the list turns off the radio, and holding Tab to turn the radio back on brings the list back.
+In TLAD, during missions, Tab toggles an on-screen list (top-left) of club members with a bar for each. Outside missions Tab does nothing in game, so the clash only happens on a job. LibertyLoadout also uses Tab (hold) for its wheels, so opening a wheel toggles the list too. Hitting Tab again to hide the list turns off the radio, and holding Tab to turn the radio back on brings the list back.
 
 <img width="440" alt="The TLAD club member list, cropped from an in-game screenshot" src="docs/img/20261107163518_1_cropped.jpg" /><br>
 <sub>The TLAD club member list, cropped from the Steam screenshot `20261107163518_1.jpg`.
 
-The list displays the crew toughness; however, no documentation mentions the Tab binding. The full write-up, with sources and in-game tests, is in [`docs/tlad-tab-list-research.md`](docs/tlad-tab-list-research.md). The list is a base-game feature (i.e., it still appears with `update` and `plugins` renamed). Tab isn't in the controls menu or `ControlMap.dat`, so it can't be rebound in game.
+The list shows how battle hardened (the crew toughness stat) each Lost member on the job is. The game's own help text confirms the key: "At any time during a job press TAB to view how battle hardened the Lost gang members with you are." No manual or controls document mentions it, though. The full write-up, with sources and in-game findings, is in [`docs/tlad-tab-list-research.md`](docs/tlad-tab-list-research.md). The list is a base-game feature (i.e., it still appears with `update` and `plugins` renamed). Tab isn't in the controls menu or `ControlMap.dat`, so it can't be rebound in game.
 
 ## How it works
 
@@ -46,6 +46,8 @@ From the logs, the game reads the keyboard through DirectInput 8 (Unicode interf
 `Log=1` writes `LoadoutTabFix.log`, which shows which input path the game uses. That helps if a game or FusionFix update breaks the plugin. The `[Hooks]` entries stay at their defaults.
 
 The swap hides real Tab from the game entirely, so any other Tab action in menus or minigames now sits on F6. Controllers are unaffected.
+
+The game's one-time help prompt early in TLAD ("At any time during a job press TAB...") still says Tab. Changing it would mean editing the game's text files, which this plugin avoids, so it is left as is.
 
 ## Build
 
