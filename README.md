@@ -47,7 +47,12 @@ From the logs, the game reads the keyboard through DirectInput 8 (Unicode interf
 
 The swap hides real Tab from the game entirely, so any other Tab action in menus or minigames now sits on F6. Controllers are unaffected.
 
-The game's one-time help prompt early in TLAD ("At any time during a job press TAB...") still says Tab. Changing it would mean editing the game's text files, which this plugin avoids, so it is left as is.
+## Known issues
+
+The game's one-time help prompt early in TLAD still says Tab. Changing it would mean editing the game's text files, which this plugin avoids, so it is left as is. With the plugin installed, press F6 (or your `NewKey`) instead.
+
+<img width="440" alt="The TLAD help prompt telling the player to press Tab during a job, cropped from an in-game screenshot" src="docs/img/20261125002527_1_cropped.jpg" /><br>
+<sub>The TLAD help prompt for the club member list, cropped from the Steam screenshot `20261125002527_1.jpg`.</sub>
 
 ## Build
 
