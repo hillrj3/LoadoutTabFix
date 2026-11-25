@@ -14,7 +14,7 @@ Setup when written:
 
 ## The problem
 
-In TLAD, Tab toggles an on-screen list of club members with a bar for each, top-left. Liberty Loadout also uses Tab (hold) for its wheels, so opening a wheel toggles the list too. Hitting Tab again to hide the list turns off the radio, and holding Tab to turn the radio back on brings the list back.
+In TLAD, Tab toggles an on-screen list (top-left) of club members with a bar for each. LibertyLoadout also uses Tab (hold) for its wheels, so opening a wheel toggles the list too. Hitting Tab again to hide the list turns off the radio, and holding Tab to turn the radio back on brings the list back.
 
 <img width="440" alt="The TLAD club member list, cropped from an in-game screenshot" src="docs/img/20261107163518_1_cropped.jpg" /><br>
 <sub>The TLAD club member list, cropped from the Steam screenshot `20261107163518_1.jpg`.
