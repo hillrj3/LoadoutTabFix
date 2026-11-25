@@ -64,4 +64,8 @@ i686-w64-mingw32-g++ -O2 -shared -static -static-libgcc -static-libstdc++ \
 ```
 ## AI Disclosure
 
-This plugin was written by Claude.
+<img width="120" align="right" alt="REAL Rating 5: Full AI" src="docs/img/real-rating-5.png" />
+
+This project is rated **REAL 5 (Full AI)** under the [REAL Rating](https://www.realgoodai.org/real-rating) (Reported Engagement with AI Level). The plugin's source, the README and the research notes were written by Claude (Anthropic). A human directed the work, tested the plugin in game and supplied the screenshots.
+
+<sub>REAL Rating graphic © 2026 by [Real Good AI](https://www.realgoodai.org/real-rating), licensed under [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/). Used unmodified.</sub>
